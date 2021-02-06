@@ -1,0 +1,27 @@
+---
+:backends:
+  - yaml
+  - eyaml
+:eyaml:
+  :datadir: hieradata
+  :pkcs7_private_key: /tmp/vagrant-eyaml/private_key.pkcs7.pem
+  :pkcs7_public_key: /tmp/vagrant-eyaml/public_key.pkcs7.pem
+:hierarchy:
+  - "nodes/%{::trusted.certname}"
+  - common
+:yaml:
+  :datadir: hieradata
+
+
+#
+# ---
+# version: 5
+# hierarchy:
+#   - name: "Yaml nodes"
+#     path: "hieradatanodes/%{::trusted.certname}.yaml"
+#   - name: "Eyaml"
+#     lookup_key: eyaml_lookup_key
+#     path: "nodes/%{trusted.certname}.eyaml"
+#     options:
+#       pkcs7_private_key: /tmp/vagrant-eyaml/private_key.pkcs7.pem
+#       pkcs7_public_key:  /tmp/vagrant-eyaml/public_key.pkcs7.pem

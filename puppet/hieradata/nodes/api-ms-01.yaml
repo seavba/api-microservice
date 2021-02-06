@@ -1,0 +1,23 @@
+classes:
+  - webapp
+
+files:
+  '/var/www':
+    ensure: 'directory'
+  '/var/www/webapp':
+    ensure: 'directory'
+
+webapp::php_file: '/var/www/webapp/index.php'
+
+nginx::nginx_servers:
+  'www.webapp.com':
+    www_root: '/var/www/webapp'
+    listen_port: 8080
+    index_files: [index.php]
+
+nginx::nginx_locations:
+   'php':
+     location: '~ \.php$'
+     server: 'www.webapp.com'
+     www_root: '/var/www/webapp'
+     fastcgi: '127.0.0.1:9000'
