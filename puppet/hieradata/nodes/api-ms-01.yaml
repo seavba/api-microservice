@@ -1,22 +1,54 @@
+#Call to the webapp class
 classes:
   - webapp
 
+#Directory for saving webapp certificates
+webapp::certs_dir: &certs_dir "/var/www/webapp/certs"
+
+#Hiera hash for creating custome directories
 files:
   '/var/www':
     ensure: 'directory'
   '/var/www/webapp':
     ensure: 'directory'
+  *certs_dir:
+    ensure: 'directory'
 
-webapp::php_file: '/var/www/webapp/index.php'
+#PHP application to be uploaded to the server
+webapp::php_file: &php_file "/var/www/webapp/index.php"
 
+#NGINX servers (vhosts)
 nginx::nginx_servers:
-  'www.webapp.com':
+#Backend vhost listening by 8080 port
+  'localhost':
     listen_port: 8080
+    listen_ip: '127.0.0.1'
     index_files: [index.php]
+    use_default_location: false
+#Frontend vhost. When listening by the 80 port, all the requests are being redirected to https (ssl_redirect). When listening by 443 port, all the requests are being proxied to "proxy pass" location
+  'www.webapp.com':
+    listen_port: 80
+    listen_ip: "%{facts.ipaddress_eth1}"
+    use_default_location: false
+    ssl_redirect: true
+    ssl: true
+    ssl_port: 443
+    ssl_cert: "%{hiera('webapp::certs_dir')}/webapp.crt"
+    ssl_key:  "%{hiera('webapp::certs_dir')}/webapp.key"
 
+#NGINX locations
 nginx::nginx_locations:
-   'php':
-     location: '/hello'
-     server: 'www.webapp.com'
-     location_alias: '/var/www/webapp/index.php'
-     fastcgi: '127.0.0.1:9000'
+#Hello location serving a PHP application on localhost server(vhost) by port 8080
+  'php':
+    location: '/hello'
+    server: 'localhost'
+    location_alias: *php_file
+    fastcgi: '127.0.0.1:9000'
+#Proxy location redirecting to the hello backend location, getting the json response
+  'proxy_pass':
+    location: '/hello'
+    ssl: true
+    ssl_only: true
+    server: 'www.webapp.com'
+    proxy: 'http://localhost:8080/hello'
+    location_cfg_append:

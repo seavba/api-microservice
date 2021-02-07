@@ -1,0 +1,46 @@
+{
+  "author": {
+    "name": "Sergio Sans",
+    "email": "seavba@gmail.com",
+    "github_url": "https://github.com/seavba",
+    "age": 36,
+    "Living at": "Sant Vicenç dels horts",
+    "hobbies":{
+      "1":"Road cycling",
+      "2":"Spend time with family",
+      "3":"Bricolage"
+    },
+    "companies which I worked":{
+      "0":{
+        "name":"HP",
+        "role":"RTPA Leader",
+        "y/m":"6m"
+      },
+      "1":{
+        "name":"Mediapro",
+        "role":"NOC Engineer",
+        "y/m":"1.5y"
+      },
+      "2":{
+        "name":"Mediapro",
+        "role":"IT Manager",
+        "y/m":"1y"
+      },
+      "3":{
+        "name":"NTT Managed Services",
+        "role":"Senior Linux and Infrastructure Engineer",
+        "y/m":"2.5y"
+      },
+      "4":{
+        "name":"Netcentric",
+        "role":"Linux and DevOps Engineer",
+        "y/m":"2.5y"
+      },
+      "5":{
+        "name":"Previous experiences",
+        "role":"Linux Engineer",
+        "y/m":"4y"
+      }
+    }
+  }
+}

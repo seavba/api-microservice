@@ -1,0 +1,66 @@
+{
+  "name": "camptocamp-openssl",
+  "version": "1.14.0",
+  "author": "Camptocamp",
+  "summary": "Camptocamp OpenSSL Module",
+  "license": "Apache-2.0",
+  "source": "https://github.com/camptocamp/puppet-openssl",
+  "project_page": "https://github.com/camptocamp/puppet-openssl",
+  "issues_url": "https://github.com/camptocamp/puppet-openssl/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 2.0.0 < 7.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04",
+        "16.04",
+        "18.04",
+        "18.10"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "OpenBSD",
+      "operatingsystemrelease": [
+        "6.7",
+        "6.8"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">=4.0.0 <7.0.0"
+    }
+  ],
+  "description": "OpenSSL Module for Puppet",
+  "pdk-version": "1.16.0",
+  "template-url": "pdk-default#1.16.0",
+  "template-ref": "tags/1.16.0-0-gaf44904"
+}
