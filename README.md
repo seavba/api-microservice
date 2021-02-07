@@ -40,7 +40,11 @@ If the IP should be changed, it must be done in the Vagrant file, line 14. Defau
 
 The installation is really simple though it can take about 10 min. because the provisioners are installing software and updating the OS. Running a single command, the webserver will be deployed:
 
-```vagrant up```
+```
+git clone https://github.com/seavba/api-microservice.git
+cd api-microservice
+vagrant up
+```
 
 "vagrant up" is creating the VM, running shell provisioners for installing the initial software needed (puppet, ruby, and ruby gems), and finally runs the custom Webapp module for configuring NGINX.
 
