@@ -14,7 +14,6 @@ Vagrant.configure("2") do |config|
     config.vm.network "private_network", ip: "172.22.0.100"
 #Mapping local folders (puppet code) to the VM
     puppet.vm.synced_folder("puppet/hieradata","/tmp/vagrant-hiera/hieradata")
-    puppet.vm.synced_folder("eyaml-keys","/tmp/vagrant-eyaml")
 #VM specifications.
     puppet.vm.provider "virtualbox" do |vb|
       vb.customize ["modifyvm", :id,
